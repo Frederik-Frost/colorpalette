@@ -1,0 +1,11 @@
+#color-display {
+  margin: 40px 0 0 10px;
+  height: 150px;
+  width: 150px;
+  border-radius: 10px;
+}
+
+button {
+  border: none;
+  font-size: 1em;
+}
