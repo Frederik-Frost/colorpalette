@@ -18,6 +18,15 @@ function setHex() {
   document.querySelector(".hex").innerHTML = hexValue;
 }
 
-function setRgb() {
-  let r = Number.parseInt(h, 16);
+function hex2rgb(hexcolor) {
+  const r = Number.parseInt(hexcolor.substring(1, 3), 16);
+  const g = Number.parseInt(hexcolor.substring(3, 5), 16);
+  const b = Number.parseInt(hexcolor.substring(5, 7), 16);
+
+  //   const arr = [r, g, b];
+  //   return arr;
+
+  return { r, g, b };
 }
+
+const hex = hex2rgb("#ff2049");
