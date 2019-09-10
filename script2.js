@@ -57,6 +57,20 @@ function selectColor(event) {
       console.log("hsl(%f,%f%,%f%)", h, s, l); // just for testing
 
       document.querySelector(".hsl").innerHTML = `hsl ${h}, ${s}, ${l}`;
+
+      analogue(h);
+
+      function analogue(base) {
+        console.log(base);
+        let colorOne = base + 30;
+        let colorTwo = colorOne + 20;
+        let colorThree = base - 20;
+        let colorFour = colorThree - 20;
+
+        document.querySelector(
+          "#color-one"
+        ).style.backgroundColor = `hsl(${colorOne}, ${s}%, ${l}%)`;
+      }
     }
   }
 
