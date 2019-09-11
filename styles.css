@@ -1,18 +1,23 @@
 #color-display {
   margin: 40px 0 0 10px;
-  height: 150px;
-  width: 150px;
+  height: 450px;
+  width: 200px;
   border-radius: 10px;
 }
 
-#color-one {
+.additional_display {
   margin: 40px 0 0 10px;
-  height: 150px;
-  width: 150px;
+  height: 450px;
+  width: 200px;
   border-radius: 10px;
 }
 
 button {
   border: none;
   font-size: 1em;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
 }

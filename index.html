@@ -8,23 +8,72 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <label id="colortheme-changer">
+      Choose harmony
+      <select name="theme" id="theme">
+        <option value="analogue">Analogue</option>
+        <option value="monochrome">Monochromatic</option>
+        <option value="triad">Triad</option>
+      </select>
+    </label>
     <button>
       select color <input type="color" id="start-color" value="#ff0000" />
     </button>
 
-    <div id="color-display"></div>
+    <main>
+      <div id="color-display">
+        <div id="color-description">
+          <h2>HEX</h2>
+          <p class="hex">N/A</p>
+          <h2>RGB</h2>
+          <p class="rgb">N/A</p>
+          <h2>HSL</h2>
+          <p class="hsl">N/A</p>
+        </div>
+      </div>
+      <div id="color-one" class="additional_display">
+        <div id="one-color-description">
+          <h2>HEX</h2>
+          <p class="one-hex">N/A</p>
+          <h2>RGB</h2>
+          <p class="one-rgb">N/A</p>
+          <h2>HSL</h2>
+          <p class="one-hsl">N/A</p>
+        </div>
+      </div>
 
-    <div id="color-description">
-      <h2>HEX</h2>
-      <p class="hex">N/A</p>
-      <h2>RGB</h2>
-      <p class="rgb">N/A</p>
-      <h2>HSL</h2>
-      <p class="hsl">N/A</p>
-    </div>
+      <div id="color-two" class="additional_display">
+        <div id="two-color-description">
+          <h2>HEX</h2>
+          <p class="two-hex">N/A</p>
+          <h2>RGB</h2>
+          <p class="two-rgb">N/A</p>
+          <h2>HSL</h2>
+          <p class="two-hsl">N/A</p>
+        </div>
+      </div>
+      <div id="color-three" class="additional_display">
+        <div id="three-color-description">
+          <h2>HEX</h2>
+          <p class="three-hex">N/A</p>
+          <h2>RGB</h2>
+          <p class="three-rgb">N/A</p>
+          <h2>HSL</h2>
+          <p class="three-hsl">N/A</p>
+        </div>
+      </div>
 
-    <div id="color-one"></div>
-
+      <div id="color-four" class="additional_display">
+        <div id="four-color-description">
+          <h2>HEX</h2>
+          <p class="four-hex">N/A</p>
+          <h2>RGB</h2>
+          <p class="four-rgb">N/A</p>
+          <h2>HSL</h2>
+          <p class="four-hsl">N/A</p>
+        </div>
+      </div>
+    </main>
     <script src="script2.js"></script>
   </body>
 </html>
