@@ -10,14 +10,14 @@ function selectColor(event) {
   console.log(color);
 
   document.querySelector("#color-display").style.backgroundColor = color;
-  document.querySelector(".hex").innerHTML = color;
+  document.querySelector(".hex").innerHTML = `HEX ${color}`;
 
   function hex2rgb(hexcolor) {
     let r = Number.parseInt(hexcolor.substring(1, 3), 16);
     let g = Number.parseInt(hexcolor.substring(3, 5), 16);
     let b = Number.parseInt(hexcolor.substring(5, 7), 16);
 
-    document.querySelector(".rgb").innerHTML = `rgb ${r}, ${g}, ${b}`;
+    document.querySelector(".rgb").innerHTML = `rgb (${r}, ${g}, ${b})`;
     rgb2hsl();
     function rgb2hsl() {
       r /= 255;
@@ -56,7 +56,7 @@ function selectColor(event) {
 
       console.log("hsl(%f,%f%,%f%)", h, s, l); // just for testing
 
-      document.querySelector(".hsl").innerHTML = `hsl ${h}, ${s}, ${l}`;
+      document.querySelector(".hsl").innerHTML = `hsl (${h}, ${s}%, ${l}%)`;
 
       getSelectedValue();
 
@@ -72,7 +72,7 @@ function selectColor(event) {
           triad(h, s, l);
         }
 
-        getColorCodesRGB(h, s, l);
+        colorCodeRGB(h, s, l);
       }
     }
   }
@@ -90,14 +90,26 @@ function analogue(h, s, l) {
     "#color-one"
   ).style.backgroundColor = `hsl(${colorOne}, ${s}%, ${l}%)`;
   document.querySelector(
+    ".one-hsl"
+  ).innerHTML = `hsl(${colorOne}, ${s}%, ${l}%)`;
+  document.querySelector(
     "#color-two"
   ).style.backgroundColor = `hsl(${colorTwo}, ${s}%, ${l}%)`;
+  document.querySelector(
+    ".two-hsl"
+  ).innerHTML = `hsl(${colorTwo}, ${s}%, ${l}%)`;
   document.querySelector(
     "#color-three"
   ).style.backgroundColor = `hsl(${colorThree}, ${s}%, ${l}%)`;
   document.querySelector(
+    ".three-hsl"
+  ).innerHTML = `hsl(${colorThree}, ${s}%, ${l}%)`;
+  document.querySelector(
     "#color-four"
   ).style.backgroundColor = `hsl(${colorFour}, ${s}%, ${l}%)`;
+  document.querySelector(
+    ".four-hsl"
+  ).innerHTML = `hsl(${colorFour}, ${s}%, ${l}%)`;
 }
 
 function monochrome(h, s, l) {
@@ -110,14 +122,27 @@ function monochrome(h, s, l) {
     "#color-one"
   ).style.backgroundColor = `hsl(${h}, ${s}%, ${mColorOne}%)`;
   document.querySelector(
+    ".one-hsl"
+  ).innerHTML = `hsl(${h}, ${s}%, ${mColorOne}%)`;
+
+  document.querySelector(
     "#color-two"
   ).style.backgroundColor = `hsl(${h}, ${s}%, ${mColorTwo}%)`;
+  document.querySelector(
+    ".two-hsl"
+  ).innerHTML = `hsl(${h}, ${s}%, ${mColorTwo}%)`;
   document.querySelector(
     "#color-three"
   ).style.backgroundColor = `hsl(${h}, ${s}%, ${mColorThree}%)`;
   document.querySelector(
+    ".three-hsl"
+  ).innerHTML = `hsl(${h}, ${s}%, ${mColorThree}%)`;
+  document.querySelector(
     "#color-four"
   ).style.backgroundColor = `hsl(${h}, ${s}%, ${mColorFour}%)`;
+  document.querySelector(
+    ".four-hsl"
+  ).innerHTML = `hsl(${h}, ${s}%, ${mColorFour}%)`;
 }
 
 function triad(h, s, l) {
@@ -130,31 +155,74 @@ function triad(h, s, l) {
     "#color-one"
   ).style.backgroundColor = `hsl(${tColorOne}, ${s}%, ${l}%)`;
   document.querySelector(
+    ".one-hsl"
+  ).innerHTML = `hsl(${tColorOne}, ${s}%, ${l}%)`;
+  document.querySelector(
     "#color-two"
   ).style.backgroundColor = `hsl(${tColorTwo}, ${s}%, ${l}%)`;
+  document.querySelector(
+    ".two-hsl"
+  ).innerHTML = `hsl(${tColorTwo}, ${s}%, ${l}%)`;
   document.querySelector(
     "#color-three"
   ).style.backgroundColor = `hsl(${tColorThree}, ${s}%, ${l}%)`;
   document.querySelector(
+    ".three-hsl"
+  ).innerHTML = `hsl(${tColorThree}, ${s}%, ${l}%)`;
+  document.querySelector(
     "#color-four"
   ).style.backgroundColor = `hsl(${tColorFour}, ${s}%, ${l}%)`;
+  document.querySelector(
+    ".four-hsl"
+  ).innerHTML = `hsl(${tColorFour}, ${s}%, ${l}%)`;
 }
 
-function getColorCodesRGB(h, s, l) {
-  let colorOneTransform = document.querySelector("#color-one");
-  let oneRGB = colorOneTransform.style.backgroundColor;
+function colorCodeRGB() {
+  let oneRGB = document.querySelector("#color-one").style.backgroundColor;
+  let twoRGB = document.querySelector("#color-two").style.backgroundColor;
+  let threeRGB = document.querySelector("#color-three").style.backgroundColor;
+  let fourRGB = document.querySelector("#color-four").style.backgroundColor;
 
-  let colorTwoTransform = document.querySelector("#color-two");
-  let twoRGB = colorTwoTransform.style.backgroundColor;
+  rgbSeperater("one", oneRGB);
+  rgbSeperater("two", twoRGB);
+  rgbSeperater("three", threeRGB);
+  rgbSeperater("four", fourRGB);
 
-  let colorThreeTransform = document.querySelector("#color-three");
-  let threeRGB = colorThreeTransform.style.backgroundColor;
+  document.querySelector(".one-rgb").innerHTML = oneRGB;
+  document.querySelector(".two-rgb").innerHTML = twoRGB;
+  document.querySelector(".three-rgb").innerHTML = threeRGB;
+  document.querySelector(".four-rgb").innerHTML = fourRGB;
+  function rgbSeperater(boxNumber, RGBValue) {
+    RGBValue = RGBValue.split(",");
+    let r = RGBValue[0].slice(4);
+    r = parseInt(r, 10);
+    let g = RGBValue[1].trim();
+    g = parseInt(g, 10);
 
-  let colorFourTransform = document.querySelector("#color-four");
-  let fourRGB = colorFourTransform.style.backgroundColor;
+    let b = RGBValue[2].slice(0, -1).trim();
+    b = parseInt(b, 10);
+    let rgb = {};
+    rgb.r = r;
+    rgb.g = g;
+    rgb.b = b;
+    console.log("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW", RGBValue);
 
-  document.querySelector(".one-rgb").innerHTML = `${oneRGB}`;
-  document.querySelector(".two-rgb").innerHTML = `${twoRGB}`;
-  document.querySelector(".three-rgb").innerHTML = `${threeRGB}`;
-  document.querySelector(".four-rgb").innerHTML = `${fourRGB}`;
+    let rgbToHex = function(rgb) {
+      var hex = Number(rgb).toString(16);
+      if (hex.length < 2) {
+        hex = "0" + hex;
+      }
+
+      return hex;
+    };
+    let fullColorHex = function(r, g, b) {
+      var red = rgbToHex(r);
+      var green = rgbToHex(g);
+      var blue = rgbToHex(b);
+      return red + green + blue;
+    };
+    document.querySelector(
+      `.${boxNumber}-hex`
+    ).textContent = `HEX: #${fullColorHex(r, g, b)}`;
+  }
 }

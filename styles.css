@@ -1,15 +1,19 @@
-#color-display {
-  margin: 40px 0 0 10px;
-  height: 450px;
-  width: 200px;
-  border-radius: 10px;
+body {
+  font-family: sans-serif;
 }
 
+#color-display,
 .additional_display {
   margin: 40px 0 0 10px;
-  height: 450px;
+  height: 300px;
   width: 200px;
   border-radius: 10px;
+  padding: 10px;
+}
+
+#color-display {
+  border: 5px solid black;
+  height: 400px;
 }
 
 button {
@@ -20,4 +24,27 @@ button {
 main {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+}
+
+#color-display {
+  grid-column-start: 3;
+  grid-row: 1;
+}
+
+#color-one {
+  grid-column-start: 2;
+  grid-row: 1;
+}
+#color-two {
+  grid-column-start: 1;
+}
+#color-three {
+  grid-column-start: 4;
+}
+#color-four {
+  grid-column-start: 5;
+}
+
+.additional_display {
+  margin-top: 150px;
 }
